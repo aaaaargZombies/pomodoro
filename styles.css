@@ -15,7 +15,7 @@ html {
 
 body {
 	box-sizing: content-box;
-	width: 80ch;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
@@ -30,7 +30,7 @@ body {
 }
 
 .center {
-	width: 50%;
+	width: 25rem;
 	height: 95vh;
 	display: grid;
 	grid-gap: 2rem;
@@ -51,15 +51,17 @@ h1 {
 	color: var(--color-txt-dark);
 	text-align: center;
 	font-weight: 600;
-	border-radius: 28px;
+	border-radius: 4rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 .status__phase {
-	padding: 0rem 1rem 0rem 1rem;
+	margin: 0rem;
+	padding: 1rem 1rem 1rem 1rem;
 }
 
 .status__phase--active {
-	padding: 0rem 1rem 0rem 1rem;
-	border-radius: 28px;
+	/* padding: 0rem 1rem 0rem 1rem; */
+	border-radius: 4rem;
 	background-color: var(--color-primary);
 	color: var(--color-bg-dark);
 }
@@ -94,7 +96,7 @@ h1 {
 	/* keyframers https://www.youtube.com/watch?v=7aobRPg7BXI */
 	stroke-dasharray: 1;
 	stroke-dashoffset: 1;
-	animation: stroke 1500s linear infinite;
+	animation: stroke 15s linear;
 }
 
 .timer__outer-gradient {
@@ -124,7 +126,7 @@ h1 {
 
 .timer__time {
 	padding: 2rem;
-	letter-spacing: -0.05em;
+	letter-spacing: -0.05rem;
 	margin-top: 3.5rem;
 	margin-bottom: 5rem;
 	text-align: center;
@@ -140,7 +142,7 @@ h1 {
 	border: none;
 	color: var(--color-txt);
 	text-transform: uppercase;
-	letter-spacing: 0.7em;
+	letter-spacing: 0.7rem;
 }
 
 .settings {
@@ -155,4 +157,18 @@ h1 {
 	height: 5vh;
 	fill: var(--color-txt-dark);
 	margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+	body {
+		background-color: limegreen;
+	}
+
+	.center {
+		width: 90%;
+	}
+
+	.status {
+		font-size: 0.83rem;
+	}
 }
