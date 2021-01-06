@@ -7,6 +7,113 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
+		<div class="modal">
+			<form class="modal__form" action="">
+				<div class="modal__header">
+					<h1 class="modal__title">Settings</h1>
+					<button class="modal__cancel">
+						<svg
+							class="modal__cancel__icon"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 44 44"
+						>
+							<g>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M38.824,0L44,5.178L5.176,44L0,38.825L38.824,0z"
+								/>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M5.176,0L44,38.825L38.824,44L0,5.178L5.176,0z"
+								/>
+							</g>
+						</svg>
+					</button>
+				</div>
+				<div class="modal__body">
+					<div class="modal__section section__time">
+						<h2 class="modal__subheading">time (minutes)</h2>
+						<div class="modal__times">
+							<div class="time">
+								<label class="time__label" for="">pomodoro</label>
+								<input type="number" value="25" class="time__input" />
+							</div>
+							<div class="time">
+								<label class="time__label" for="">short break</label>
+								<input type="number" value="5" class="time__input" />
+							</div>
+							<div class="time">
+								<label class="time__label" for="">long break</label>
+								<input type="number" value="15" class="time__input" />
+							</div>
+						</div>
+					</div>
+					<div class="modal__section section__font">
+						<h2 class="modal__subheading">font</h2>
+						<div>
+							<input
+								class="modal__radio"
+								id="open"
+								type="radio"
+								checked="true"
+								name="font"
+							/>
+							<label class="label__radio labal__open" for="open">Aa</label>
+							<input
+								class="modal__radio"
+								id="source"
+								type="radio"
+								name="font"
+							/>
+							<label class="label__radio label__source" for="source">Aa</label>
+							<input
+								class="modal__radio"
+								id="robotoSlab"
+								type="radio"
+								name="font"
+							/>
+							<label class="label__radio label__roboto" for="robotoSlab"
+								>Aa</label
+							>
+						</div>
+					</div>
+					<div class="modal__section section__color">
+						<h2 class="modal__subheading">color</h2>
+						<div>
+							<input
+								class="modal__radio"
+								id="primary"
+								type="radio"
+								checked="true"
+								name="color"
+							/>
+							<label class="label__radio label--primary" for="primary">X</label>
+							<input
+								class="modal__radio"
+								id="secondary"
+								type="radio"
+								name="color"
+							/>
+							<label class="label__radio label--secondary" for="secondary"
+								>X</label
+							>
+							<input
+								class="modal__radio"
+								id="tertiary"
+								type="radio"
+								name="color"
+							/>
+							<label class="label__radio label--tertiary" for="tertiary"
+								>X</label
+							>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="modal__apply">Apply</button>
+			</form>
+		</div>
 		<div class="center">
 			<h1>pomodoro</h1>
 			<div class="status">
