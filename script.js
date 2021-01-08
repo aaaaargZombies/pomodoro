@@ -4,6 +4,9 @@ let modal = document.getElementsByClassName("modal")[0];
 let closeBtn = document.getElementsByClassName("modal__cancel")[0];
 let settingsBtn = document.getElementsByClassName("settings")[0];
 let form = document.getElementsByClassName("modal__form")[0];
+let timeInputs = document.getElementsByClassName("time__input");
+let timeUpBtns = document.getElementsByClassName("time__up");
+let timeDownBtns = document.getElementsByClassName("time__down");
 
 const setProgress = (el, percent = 0) => {
 	el.style.strokeDasharray = 1;
@@ -29,6 +32,19 @@ const openModal = e => {
 	e.preventDefault();
 	modal.style.display = "flex";
 };
+
+const timeUp = el => {
+	el.value++;
+};
+
+const timeDown = el => {
+	el.value--;
+};
+
+[...timeInputs].forEach((el, i) => {
+	timeUpBtns[i].onclick = () => timeUp(el);
+	timeDownBtns[i].onclick = () => timeDown(el);
+});
 
 circ.addEventListener("animationend", () => {
 	console.log("💥BOOOOM!💥");
@@ -56,3 +72,8 @@ form.onsubmit = e => {
 	let settings = { pomodoro, shortBreak, longBreak, font, color };
 	console.log(settings);
 };
+
+// Pomodoro
+//
+// pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - longBreak
+//

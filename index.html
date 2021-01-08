@@ -38,21 +38,132 @@
 						<div class="modal__times">
 							<div class="time">
 								<label class="time__label" for="">pomodoro</label>
-								<input type="number" value="25" class="time__input" />
+								<button type="button" class="time__input--btn time__up">
+									<svg
+										class="arrow__up"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 15L12 9L21 15"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<button type="button" class="time__input--btn time__down">
+									<svg
+										class="arrow__down"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 9L12 15L21 9"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<input
+									id="pomodoro"
+									type="number"
+									value="25"
+									class="time__input"
+								/>
 							</div>
 							<div class="time">
 								<label class="time__label" for="">short break</label>
-								<input type="number" value="5" class="time__input" />
+								<button type="button" class="time__input--btn time__up">
+									<svg
+										class="arrow__up"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 15L12 9L21 15"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<button type="button" class="time__input--btn time__down">
+									<svg
+										class="arrow__down"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 9L12 15L21 9"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<input
+									id="shortBreak"
+									type="number"
+									value="5"
+									class="time__input"
+								/>
 							</div>
 							<div class="time">
 								<label class="time__label" for="">long break</label>
-								<input type="number" value="15" class="time__input" />
+								<button type="button" class="time__input--btn time__up">
+									<svg
+										class="arrow__up"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 15L12 9L21 15"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<button type="button" class="time__input--btn time__down">
+									<svg
+										class="arrow__down"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M3 9L12 15L21 9"
+											stroke="#BCBFC8"
+											stroke-width="3"
+										/>
+									</svg>
+								</button>
+								<input
+									id="longBreak"
+									type="number"
+									value="15"
+									class="time__input"
+								/>
 							</div>
 						</div>
 					</div>
 					<div class="modal__section section__font">
 						<h2 class="modal__subheading">font</h2>
-						<div>
+						<div class="radio__container">
 							<input
 								class="modal__radio"
 								id="open"
@@ -60,28 +171,34 @@
 								checked="true"
 								name="font"
 							/>
-							<label class="label__radio labal__open" for="open">Aa</label>
+							<label class="label__radio label__font labal__open" for="open"
+								>Aa</label
+							>
 							<input
 								class="modal__radio"
 								id="source"
 								type="radio"
 								name="font"
 							/>
-							<label class="label__radio label__source" for="source">Aa</label>
+							<label class="label__radio label__font label__source" for="source"
+								>Aa</label
+							>
 							<input
 								class="modal__radio"
 								id="robotoSlab"
 								type="radio"
 								name="font"
 							/>
-							<label class="label__radio label__roboto" for="robotoSlab"
+							<label
+								class="label__radio label__font label__roboto"
+								for="robotoSlab"
 								>Aa</label
 							>
 						</div>
 					</div>
 					<div class="modal__section section__color">
 						<h2 class="modal__subheading">color</h2>
-						<div>
+						<div class="radio__container">
 							<input
 								class="modal__radio"
 								id="primary"
@@ -89,25 +206,69 @@
 								checked="true"
 								name="color"
 							/>
-							<label class="label__radio label--primary" for="primary">X</label>
+							<label class="label__radio label--primary" for="primary">
+								<svg
+									class="label__tick"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<g id="done_24px">
+										<path
+											id="icon/action/done_24px"
+											d="M8.79995 15.9L4.59995 11.7L3.19995 13.1L8.79995 18.7L20.8 6.7L19.4 5.3L8.79995 15.9Z"
+										/>
+									</g>
+								</svg>
+							</label>
 							<input
 								class="modal__radio"
 								id="secondary"
 								type="radio"
 								name="color"
 							/>
-							<label class="label__radio label--secondary" for="secondary"
-								>X</label
-							>
+							<label class="label__radio label--secondary" for="secondary">
+								<svg
+									class="label__tick"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<g id="done_24px">
+										<path
+											id="icon/action/done_24px"
+											d="M8.79995 15.9L4.59995 11.7L3.19995 13.1L8.79995 18.7L20.8 6.7L19.4 5.3L8.79995 15.9Z"
+										/>
+									</g>
+								</svg>
+							</label>
 							<input
 								class="modal__radio"
 								id="tertiary"
 								type="radio"
 								name="color"
 							/>
-							<label class="label__radio label--tertiary" for="tertiary"
-								>X</label
-							>
+							<label class="label__radio label--tertiary" for="tertiary">
+								<svg
+									class="label__tick"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<g id="done_24px">
+										<path
+											id="icon/action/done_24px"
+											d="M8.79995 15.9L4.59995 11.7L3.19995 13.1L8.79995 18.7L20.8 6.7L19.4 5.3L8.79995 15.9Z"
+										/>
+									</g>
+								</svg>
+							</label>
 						</div>
 					</div>
 				</div>
