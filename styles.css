@@ -15,6 +15,7 @@
 	--color-modal-txt-light: #9f9ea4;
 	--color-modal-input-bg: #eef1fa;
 	--width-modal-form: 32rem;
+	--width-modal-form-mobile: 85%;
 }
 
 html {
@@ -22,17 +23,13 @@ html {
 }
 
 body {
-	box-sizing: content-box;
+	/* box-sizing: content-box; */
 	width: 100%;
-	/* margin-left: auto; */
-	/* margin-right: auto; */
-	margin: 0rem auto 0rem auto;
+	height: 100%;
+	margin: 0rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* display: flex; */
-	/* justify-content: center; */
-	/* align-items: center; */
 	background-color: var(--color-bg);
 	color: var(--color-txt);
 	font-family: "Open Sans", sans-serif;
@@ -40,7 +37,7 @@ body {
 
 .center {
 	width: 25rem;
-	height: 97vh;
+	height: 100%;
 	display: grid;
 	grid-gap: 2rem;
 	grid-template-columns: auto;
@@ -178,6 +175,10 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	background-color: hsla(240, 30.4%, 9%, 0.51);
+	/* top: 0; */
+	/* right: 0; */
+	/* bottom: 0; */
+	/* left: 0; */
 	/* background-color: limegreen; */
 }
 
@@ -393,5 +394,60 @@ input[type="radio"]:checked + label .label__tick {
 
 	.status {
 		font-size: 0.83rem;
+	}
+
+	.modal {
+		height: 100%;
+	}
+
+	.modal__form {
+		/* position: relative; */
+		/* background-color: white; */
+		width: var(--width-modal-form-mobile);
+		/* border-radius: 2rem; */
+		/* padding: 0rem 2rem 0rem 2rem; */
+		/* height: 97vh; */
+		/* display: grid; */
+		/* grid-gap: 2rem; */
+		/* grid-template-columns: auto; */
+		/* grid-template-rows: min-content min-content min-content 1fr; */
+	}
+
+	.modal__section {
+		/* display: flex; */
+		flex-direction: column;
+		/* padding: 1rem 0rem 1rem 0rem; */
+		/* justify-content: space-between; */
+		align-items: center;
+	}
+	.modal__times {
+		/* display: flex; */
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.time {
+		position: relative;
+		width: 100%;
+		/* display: flex; */
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0rem 0rem 0.5rem 0rem;
+	}
+
+	.time__input {
+		width: 40%;
+		padding: 1rem;
+		border-radius: 0.75rem;
+		-moz-appearance: textfield;
+	}
+
+	.time__up {
+		bottom: 1.5rem;
+	}
+
+	.time__down {
+		bottom: 0.7rem;
 	}
 }
