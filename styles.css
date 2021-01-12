@@ -11,6 +11,7 @@
 	--color-primary: #f87070;
 	--color-secondary: #72f1f7;
 	--color-tertiary: #d982f7;
+	--color-selected: var(--color-primary);
 	--color-modal-txt: #191a2b;
 	--color-modal-txt-light: #9f9ea4;
 	--color-modal-input-bg: #eef1fa;
@@ -69,7 +70,7 @@ h1 {
 .status__phase--active {
 	/* padding: 0rem 1rem 0rem 1rem; */
 	border-radius: 4rem;
-	background-color: var(--color-primary);
+	background-color: var(--color-selected);
 	color: var(--color-bg-dark);
 }
 
@@ -94,7 +95,7 @@ h1 {
 }
 
 .progress-ring__circle {
-	stroke: var(--color-primary);
+	stroke: var(--color-selected);
 	stroke-width: 0.2rem;
 	fill: transparent;
 	stroke-linecap: round;
@@ -103,7 +104,8 @@ h1 {
 	/* keyframers https://www.youtube.com/watch?v=7aobRPg7BXI */
 	stroke-dasharray: 1;
 	stroke-dashoffset: 1;
-	animation: stroke 15s linear;
+	/* animation: stroke 15s linear; */
+	/* animation-play-state: paused; */
 }
 
 .timer__outer-gradient {
@@ -369,7 +371,7 @@ input[type="radio"]:checked + label .label__tick {
 	width: 10rem;
 	position: absolute;
 	color: white;
-	background-color: var(--color-primary);
+	background-color: var(--color-selected);
 	border: none;
 	padding: 1rem 3rem;
 	border-radius: 2rem;

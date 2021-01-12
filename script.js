@@ -1,3 +1,60 @@
+// Pomodoro
+//
+// pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - longBreak
+//
+
+// # STATE
+
+// {
+// 		phase: 0 - phases.length,
+// 		timeRemain: seconds,
+// 		taused: true / false,
+// 		setttings: {
+// 			font: "open" / "source" / "robotoSlab"
+// 			color: "primary" / "tertiary" / "secondary"
+// 			pomodoro: seconds,
+// 			shortBreak: seconds,
+// 			longBreak: seconds,
+// 		}
+// }
+
+//  # EVENTS
+
+// ## Time passes
+// Interval timer, animation runs, timeRemain is adjusted, time display in DOM is updated.
+//
+// ## Time ends, use animation event? could trigger on both to avoid a glitch incase there's any missmatch with timings.
+// switch to new phase, depending on current phase and cycle, update time in DOM, status in DOM, animation in DOM.
+//
+// ## startPause button pressed
+// allow time to progress if paused state is true, continue animation aswell... or the reverse.
+//
+// ## SETTINGS UPDATE
+// fresh state with new settings
+
+let state = {
+	phase: 0,
+	timeRemain: 1500,
+	paused: true,
+	settings: {
+		font: "open",
+		color: "primary",
+		pomodoro: 1500,
+		shortBreak: 300,
+		longBreak: 900
+	}
+};
+
+const phases = [
+	"pomodoro",
+	"shortBreak",
+	"pomodoro",
+	"shortBreak",
+	"pomodoro",
+	"shortBreak",
+	"pomodoro",
+	"longBreak"
+];
 let circ = document.getElementsByClassName("progress-ring__circle")[0];
 let timerBtn = document.getElementsByClassName("timer__btn")[0];
 let modal = document.getElementsByClassName("modal")[0];
@@ -7,6 +64,9 @@ let form = document.getElementsByClassName("modal__form")[0];
 let timeInputs = document.getElementsByClassName("time__input");
 let timeUpBtns = document.getElementsByClassName("time__up");
 let timeDownBtns = document.getElementsByClassName("time__down");
+let root = document.documentElement;
+
+// root.style.setProperty("--color-selected", "var(--color-secondary)")
 
 const setProgress = (el, percent = 0) => {
 	el.style.strokeDasharray = 1;
@@ -14,12 +74,14 @@ const setProgress = (el, percent = 0) => {
 };
 
 const startPause = () => {
-	if (circ.style.animationPlayState === "paused") {
-		circ.style.animationPlayState = "";
+	if (state.paused) {
+		circ.style.animationPlayState = "running";
 		timerBtn.textContent = "pause";
+		state.paused = !state.paused;
 	} else {
 		circ.style.animationPlayState = "paused";
 		timerBtn.textContent = "start";
+		state.paused = !state.paused;
 	}
 };
 
@@ -48,6 +110,7 @@ const timeDown = el => {
 
 circ.addEventListener("animationend", () => {
 	console.log("💥BOOOOM!💥");
+	circ.style.animationPlayState = "initial";
 });
 
 timerBtn.onclick = startPause;
@@ -56,8 +119,6 @@ circ.onclick = startPause;
 settingsBtn.onclick = openModal;
 // modal.onclick = closeModal;
 closeBtn.onclick = closeModal;
-
-timerBtn.click();
 
 form.onsubmit = e => {
 	e.preventDefault();
@@ -69,11 +130,106 @@ form.onsubmit = e => {
 			if (e.type === "number") return parseInt(e.value);
 			return e.id;
 		});
-	let settings = { pomodoro, shortBreak, longBreak, font, color };
-	console.log(settings);
+	let settings = {
+		// pomodoro: pomodoro * 60,
+		pomodoro: pomodoro * 6,
+		// shortBreak: shortBreak * 60,
+		shortBreak: shortBreak * 6,
+		// longBreak: longBreak * 60,
+		longBreak: longBreak * 6,
+		font,
+		color
+	};
+	updateSettings(settings);
+	renderDOM(state);
+	closeBtn.click();
 };
 
-// Pomodoro
-//
-// pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - shortBreak - pomodoro - longBreak
-//
+const setColor = color => {
+	root.style.setProperty(`--color-selected`, `var(--color-${color})`);
+};
+
+const fontMap = {
+	open: `"Open Sans", sans-serif`,
+	robotoSlab: `"Roboto Slab", sans-serif`,
+	robotoSlab: `Source Serif Pro", serif`
+};
+
+const setFont = font => {
+	document.body.style.fontFamily = fontMap[font];
+};
+
+const setActivePhase = phase => {
+	let statusPhases = [...document.getElementsByClassName("status__phase")];
+	statusPhases.forEach(el => {
+		el.classList.remove("status__phase--active");
+	});
+	statusPhases.forEach(el => {
+		if (el.textContent.replace(" ", "").replace("b", "B") === phase) {
+			el.classList.add("status__phase--active");
+		}
+	});
+};
+
+const secondsToTime = seconds => {
+	let secs = seconds % 60;
+	let mins = Math.floor(seconds / 60);
+	if (secs < 10) secs = "0" + secs;
+
+	return `${mins}:${secs}`;
+};
+
+const setTime = seconds => {
+	let time = document.getElementsByClassName("timer__time")[0];
+	time.textContent = secondsToTime(seconds);
+};
+
+const setAnimationLength = seconds => {
+	// TODO
+	circ.style.strokeDashoffset = "1";
+	circ.style.animation = `none`;
+	circ.style.animation = `stroke ${seconds}s linear`;
+	circ.style.animationPlayState = "paused";
+	circ.style.animationPlayState = state.paused ? "paused" : "running";
+};
+
+const setStroke = () => {
+	circ.style.strokeDashoffset = `${state.timeRemain /
+		state.settings[phases[state.phase]]}`;
+};
+
+const updateSettings = settings => {
+	// copy state, add update to copy, replace old state with copy
+	state.settings = settings;
+	state.phase = 0;
+	state.timeRemain = state.settings[phases[state.phase]];
+};
+
+const renderDOM = () => {
+	// read dom, make changes.
+	// can't re-render whole dom each time because it will restart animation?
+
+	setTime(state.timeRemain);
+	setActivePhase(phases[state.phase]);
+	setFont(state.settings.font);
+	setColor(state.settings.color);
+	setStroke();
+	// setAnimationLength(state.settings[phases[state.phase]]);
+};
+
+const main = () => {
+	if (state.paused) return;
+	state.timeRemain--;
+	if (state.timeRemain <= 0) {
+		state.phase = state.phase === phases.length - 1 ? 0 : ++state.phase;
+		state.timeRemain = state.settings[phases[state.phase]];
+		setActivePhase(phases[state.phase]);
+		// setAnimationLength(state.settings[phases[state.phase]]);
+	}
+	setTime(state.timeRemain);
+	setStroke();
+};
+
+renderDOM(state);
+
+setInterval(main, 1000);
