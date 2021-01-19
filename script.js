@@ -39,15 +39,8 @@ const setProgress = (el, percent = 0) => {
 };
 
 const startPause = () => {
-	if (state.paused) {
-		circ.style.animationPlayState = "running";
-		timerBtn.textContent = "pause";
-		state.paused = !state.paused;
-	} else {
-		circ.style.animationPlayState = "paused";
-		timerBtn.textContent = "start";
-		state.paused = !state.paused;
-	}
+	timerBtn.textContent = state.paused ? "pause" : "start";
+	state.paused = !state.paused;
 };
 
 const closeModal = e => {
@@ -58,6 +51,7 @@ const closeModal = e => {
 const openModal = e => {
 	e.preventDefault();
 	modal.style.display = "flex";
+	modal.focus();
 };
 
 const timeUp = el => {
@@ -73,21 +67,14 @@ const timeDown = el => {
 	timeDownBtns[i].onclick = () => timeDown(el);
 });
 
-circ.addEventListener("animationend", () => {
-	console.log("💥BOOOOM!💥");
-	circ.style.animationPlayState = "initial";
-});
-
 timerBtn.onclick = startPause;
 circ.onclick = startPause;
 
 settingsBtn.onclick = openModal;
-// modal.onclick = closeModal;
 closeBtn.onclick = closeModal;
 
 form.onsubmit = e => {
 	e.preventDefault();
-	// console.log(e);
 	let [pomodoro, shortBreak, longBreak, font, color] = [...e.target.elements]
 		.filter(e => e.value)
 		.filter(e => e.type !== "radio" || e.checked)
@@ -97,11 +84,8 @@ form.onsubmit = e => {
 		});
 	let settings = {
 		pomodoro: pomodoro * 60,
-		// pomodoro: pomodoro * 6,
 		shortBreak: shortBreak * 60,
-		// shortBreak: shortBreak * 6,
 		longBreak: longBreak * 60,
-		// longBreak: longBreak * 6,
 		font,
 		color
 	};
