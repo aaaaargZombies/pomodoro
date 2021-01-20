@@ -43,7 +43,7 @@ body {
 	grid-gap: 2rem;
 	grid-template-columns: auto;
 	grid-template-rows: min-content min-content min-content 1fr;
-	min-height: 35rem;
+	/* min-height: 35rem; */
 }
 
 h1 {
@@ -144,7 +144,7 @@ h1 {
 	border: none;
 	display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	/* align-items: flex-end; */
 }
 
 .settings__gear {
@@ -155,7 +155,7 @@ h1 {
 
 .modal {
 	top: 0;
-	display: flex;
+	display: none;
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -352,7 +352,6 @@ input[type="radio"]:checked + label .label__tick {
 	font-size: 1.2rem;
 	font-weight: 600;
 	bottom: -2rem;
-	left: calc(var(--width-modal-form) / 2 - 5rem);
 	left: 0;
 	right: 0;
 	margin-left: auto;
@@ -366,7 +365,7 @@ input[type="radio"]:checked + label .label__tick {
 
 	.center {
 		width: 90%;
-		grid-gap: 1rem;
+		/* grid-gap: 1rem; */
 	}
 
 	.status {
@@ -374,8 +373,14 @@ input[type="radio"]:checked + label .label__tick {
 		padding: 0.4rem;
 	}
 
-	.status__phase {
-		padding: 0.8rem;
+	.timer__time {
+		padding: 1.8rem;
+		letter-spacing: -0.05rem;
+		margin-top: 3.1rem;
+		margin-bottom: 4rem;
+		text-align: center;
+		font-weight: 700;
+		font-size: 4.4rem;
 	}
 
 	.modal__form {
