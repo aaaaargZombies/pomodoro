@@ -33,6 +33,9 @@ let timeUpBtns = document.getElementsByClassName("time__up");
 let timeDownBtns = document.getElementsByClassName("time__down");
 let root = document.documentElement;
 
+let pomSound = new Audio("./Air_Plane-Ding-SoundBible.com-496729130.mp3");
+let breakSound = new Audio("./A-Tone-His_Self-1266414414.mp3");
+
 const setProgress = (el, percent = 0) => {
 	el.style.strokeDasharray = 1;
 	el.style.strokeDashoffset = 1 - percent;
@@ -170,6 +173,7 @@ const main = () => {
 		state.phase = state.phase === phases.length - 1 ? 0 : ++state.phase;
 		state.timeRemain = state.settings[phases[state.phase]];
 		setActivePhase(phases[state.phase]);
+		phases[state.phase] === "Pomodoro" ? pomSound.play() : breakSound.play();
 	}
 	setTime(state.timeRemain);
 	setStroke();
