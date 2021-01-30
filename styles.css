@@ -368,7 +368,7 @@ input[type="radio"]:checked + label .label__tick {
 	font-size: 1.2rem;
 	font-weight: 600;
 	position: absolute;
-	bottom: 7rem;
+	top: 30.5rem;
 	left: 0;
 	right: 0;
 	margin-left: auto;
@@ -381,9 +381,9 @@ input[type="radio"]:checked + label .label__tick {
 	}
 
 	body {
-		background-color: lime;
+		/* background-color: lime; */
 		grid-template-columns: 2fr 94% 1fr;
-		grid-template-rows: 1rem auto 3rem;
+		grid-template-rows: 2rem auto 3rem;
 	}
 
 	.center {
@@ -444,6 +444,6 @@ input[type="radio"]:checked + label .label__tick {
 		bottom: 0.7rem;
 	}
 	.modal__apply {
-		bottom: -7rem;
+		top: 36.5rem;
 	}
 }
