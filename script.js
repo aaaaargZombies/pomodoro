@@ -46,11 +46,13 @@ const startPause = () => {
 const closeModal = e => {
 	e.preventDefault();
 	modal.style.display = "none";
+	form.style.display = "none";
 };
 
 const openModal = e => {
 	e.preventDefault();
-	modal.style.display = "flex";
+	modal.style.display = "block";
+	form.style.display = "block";
 	modal.focus();
 };
 

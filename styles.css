@@ -16,7 +16,7 @@
 	--color-modal-txt-light: #9f9ea4;
 	--color-modal-input-bg: #eef1fa;
 	--width-modal-form: 32rem;
-	--width-modal-form-mobile: 85%;
+	--width-modal-form-mobile: 95%;
 }
 
 html {
@@ -28,15 +28,23 @@ body {
 	height: 100%;
 	margin: 0rem;
 	padding: 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* align-items: center; */
 	background-color: var(--color-bg);
 	color: var(--color-txt);
 	font-family: "Open Sans", sans-serif;
+
+	display: grid;
+	grid-template-columns: 1fr 25rem 1fr;
+	grid-template-rows: 5rem auto 5rem;
+	justify-items: center;
+	/* row-gap: 5rem; */
 }
 
 .center {
+	grid-column: 2;
+	grid-row: 1 / 4;
 	width: 25rem;
 	height: 100%;
 	display: grid;
@@ -154,23 +162,31 @@ h1 {
 }
 
 .modal {
-	top: 0;
+	/* top: 0; */
 	display: none;
 	width: 100%;
 	height: 100%;
-	position: fixed;
-	z-index: 100;
-	justify-content: center;
-	align-items: center;
+	/* position: fixed; */
+	/* z-index: 100; */
+	/* justify-content: center; */
+	/* align-items: center; */
 	background-color: hsla(240, 30.4%, 9%, 0.51);
-	overflow: auto;
+	/* overflow: auto; */
+
+	grid-area: 1 / 1 / 4 / 4;
 }
 
 .modal__form {
-	position: relative;
+	/* position: relative; */
+	display: none;
 	background-color: white;
 	width: var(--width-modal-form);
 	border-radius: 2rem;
+
+	height: min-content;
+	grid-column: 2;
+	grid-row: 2;
+	z-index: 101;
 }
 
 .modal__header {
@@ -214,8 +230,8 @@ h1 {
 	flex-direction: column;
 }
 
-.section__font {
-}
+/* .section__font { */
+/* } */
 
 .section__color {
 	border: none;
@@ -344,7 +360,6 @@ input[type="radio"]:checked + label .label__tick {
 
 .modal__apply {
 	width: 10rem;
-	position: absolute;
 	color: white;
 	background-color: var(--color-selected);
 	border: none;
@@ -352,7 +367,8 @@ input[type="radio"]:checked + label .label__tick {
 	border-radius: 2rem;
 	font-size: 1.2rem;
 	font-weight: 600;
-	bottom: -2rem;
+	position: absolute;
+	top: 30.5rem;
 	left: 0;
 	right: 0;
 	margin-left: auto;
@@ -362,6 +378,12 @@ input[type="radio"]:checked + label .label__tick {
 @media (max-width: 600px) {
 	h1 {
 		font-size: 1.5rem;
+	}
+
+	body {
+		/* background-color: lime; */
+		grid-template-columns: 2fr 94% 1fr;
+		grid-template-rows: 2rem auto 3rem;
 	}
 
 	.center {
@@ -386,7 +408,7 @@ input[type="radio"]:checked + label .label__tick {
 
 	.modal__form {
 		width: var(--width-modal-form-mobile);
-		margin: 6rem 0rem 3rem 0rem;
+		/* margin: 6rem 0rem 3rem 0rem; */
 	}
 
 	.modal__section {
@@ -421,5 +443,8 @@ input[type="radio"]:checked + label .label__tick {
 
 	.time__down {
 		bottom: 0.7rem;
+	}
+	.modal__apply {
+		top: 36.5rem;
 	}
 }
