@@ -62,9 +62,15 @@ const timeDown = el => {
 	el.value--;
 };
 
+const inputKeydown = e => {
+	if (e.key === "Enter") e.preventDefault();
+};
+
 [...timeInputs].forEach((el, i) => {
 	timeUpBtns[i].onclick = () => timeUp(el);
 	timeDownBtns[i].onclick = () => timeDown(el);
+	el.oninput = e => e.preventDefault();
+	el.onkeydown = inputKeydown;
 });
 
 timerBtn.onclick = startPause;
@@ -89,7 +95,6 @@ form.onsubmit = e => {
 		font,
 		color
 	};
-	console.log(settings);
 	updateSettings(settings);
 	renderDOM(state);
 	closeBtn.click();
