@@ -77,6 +77,9 @@ const inputKeydown = e => {
 
 timerBtn.onclick = startPause;
 circ.onclick = startPause;
+document.body.onkeydown = e => {
+	if (e.keyCode === 32) startPause();
+};
 
 settingsBtn.onclick = openModal;
 closeBtn.onclick = closeModal;
