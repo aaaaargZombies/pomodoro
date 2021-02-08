@@ -5,4 +5,4 @@ A simple pomodoro app, trying to replicate the design from [frontend mentor](htt
 Has some fun with SVG and animation.
 
 ![desktop view](previews/desktop.png)
-![mobile view](previews/mobile.png)
+![mobile view](previews/mobile.gif)
